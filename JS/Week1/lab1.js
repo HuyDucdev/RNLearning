@@ -178,4 +178,138 @@ const printForecast = (arr) => {
     console.log(`... ${arr[i]}ºC in 1 days ...`);
   }
 };
-printForecast(data2);
+// printForecast(data2);
+
+// Data Structures, Modern Operators and Strings
+// Coding Challenge #1
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  scorer: {
+    Gnarby: 1,
+    Hummels: 1,
+    Lewandowski: 2,
+  },
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    draw: 3.25,
+    team2: 6.5,
+  },
+};
+const players1 = game.players[0];
+const players2 = game.players[1];
+const gk = players1[0];
+const fieldPlayers = players1.slice(1);
+const allPlayers = players1.concat(players2);
+const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
+
+const printGoals = () => {
+  for (let i = 0; i < game.scored.length; i++) {
+    console.log(`Player scored: ${game.scored[i]}`);
+  }
+};
+
+// console.log(`${game.odds.team1 < game.odds.team2 && "team 1" || "team 2"} has higher win rate`)
+
+// Coding Challenge #2
+for (let i = 0; i < game.scored.length; i++) {
+  // console.log(`Goal ${i + 1}: ${game.scored[i]}`);
+}
+
+// console.log(
+//   `Odd of vitory ${game.team1}: ${game.odds.team1}\nOdd of draw: ${game.odds.draw}\nOdd of victory ${game.team2}: ${game.odds.team2}`
+// );
+
+// Coding Challenge #3
+const gameEvents = new Map([
+  [17, "⚽ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽ GOAL"],
+  [80, "⚽ GOAL"],
+  [92, "🔶 Yellow card"],
+]);
+
+const events = [];
+
+// Working With Arrays
+// Coding Challenge #1
+
+const dataDog = {
+  test1: {
+    Julia: [3, 5, 2, 12, 7],
+    Kate: [4, 1, 15, 8, 3],
+  },
+  test2: {
+    Julia: [9, 16, 6, 8, 3],
+    Kate: [10, 5, 6, 1, 4],
+  },
+};
+
+const checkDogs = (arr1, arr2) => {
+  newDogsArr = arr1.slice(1);
+  allDog = newDogsArr.concat(arr2);
+  for (let i = 0; i < allDog.length; i++) {
+    console.log(
+      `Dog number ${i + 1} is ${
+        allDog[i] >= 3 ? "an adult" : "still a puppy"
+      } and is ${allDog[i]} years old`
+    );
+  }
+};
+// checkDogs(dataDog.test2.Julia, dataDog.test2.Kate);
+
+const dataDog1 = {
+  data1: [5, 2, 4, 1, 15, 8, 3],
+  data2: [16, 6, 10, 5, 6, 1, 4],
+};
+
+function calcAverageHumanAge(ages) {
+  let sumAges = 0;
+  let humanAge;
+  let countAdultDog = 0
+  for(let i = 0; i < ages.length; i++){
+    humanAge = arr[i] <= 2 ? 2*ages[i] : 16 + ages[i] *4
+    if(humanAge > 18){
+      sumAges+= humanAge;
+      countAdultDog+=1
+    }
+  }
+  console.log(`Average human ages of adult dog is: ${}`)
+}
