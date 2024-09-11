@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Screen1_d",
-    "slug": "Screen1_d",
+    "name": "FirstScreen",
+    "slug": "FirstScreen",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

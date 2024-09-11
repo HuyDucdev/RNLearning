@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#E3C000",
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 10,
   },
   butText: {
     textTransform: "uppercase",
