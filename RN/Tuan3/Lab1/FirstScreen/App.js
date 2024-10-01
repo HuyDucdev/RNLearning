@@ -22,6 +22,7 @@ export default function App() {
           <Text style={styles.butText}>sign up</Text>
         </Pressable>
       </View>
+      
     </View>
   );
 }
