@@ -17,6 +17,8 @@ const App = () => {
   const [textData, setText] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
+  const [currentId, setCurrentId] = useState(null);
+  const [isCreate, setIsCreate] = useState(true);
 
   const bgRef = useRef("null");
   const itemRef = useRef();
@@ -52,7 +54,14 @@ const App = () => {
 
         <Text style={{ fontSize: 18, fontWeight: 700 }}>{item.content}</Text>
         <View style={{ flexDirection: "row", gap: 5 }}>
-          <Pressable>
+          <Pressable
+            onPress={() => {
+              setCurrentId(item.id);
+              setModalVisible(true);
+              setIsCreate(false);
+              bgRef.current.style.opacity = "0.5";
+            }}
+          >
             <Ionicons name="create-outline" size={20} color="black" />
           </Pressable>
           <Pressable
@@ -80,6 +89,8 @@ const App = () => {
         newData
       );
       setResponseMessage("Data created successfully!");
+      setModalVisible(false);
+      bgRef.current.style.opacity = "1";
     } catch (error) {
       if (error.response) {
         setResponseMessage(`Error: ${error.response.data.message}`);
@@ -101,6 +112,33 @@ const App = () => {
         setResponseMessage(`Error: ${error.response.data.message}`);
       } else {
         setResponseMessage("Failed to delete data");
+      }
+    }
+  };
+
+  const updateData = async () => {
+    if (currentId) {
+      const updatedData = {
+        content: textData,
+      };
+
+      try {
+        await axios.put(
+          `https://661389d053b0d5d80f6799e5.mockapi.io/test/${currentId}`,
+          updatedData
+        );
+        setData((prevData) =>
+          prevData.map((item) =>
+            item.id === currentId ? { ...item, ...updatedData } : item
+          )
+        );
+        setResponseMessage(`Data with updated successfully!`);
+        setText("");
+        setModalVisible(false);
+        bgRef.current.style.opacity = "1";
+        setCurrentId(null);
+      } catch (error) {
+        setResponseMessage("Failed to update data");
       }
     }
   };
@@ -144,7 +182,10 @@ const App = () => {
             />
             <Pressable
               style={{ alignSelf: "flex-end" }}
-              onPress={createNewData}
+              onPress={() => {
+                if (isCreate) createNewData();
+                else updateData();
+              }}
             >
               <Ionicons name="checkmark-outline" size={30} color="white" />
             </Pressable>
@@ -163,6 +204,7 @@ const App = () => {
         style={{ left: 100 }}
         onPress={() => {
           setModalVisible(true);
+          setIsCreate(true);
           bgRef.current.style.opacity = "0.5";
         }}
       >
