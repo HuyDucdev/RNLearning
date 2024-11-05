@@ -1,6 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Pressable, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 
 export default function App() {
   return (
@@ -10,24 +11,25 @@ export default function App() {
         colors={["#C7F4F6", "#00CCF9"]}
         locations={[0.85, 1]}
       >
-        <View style={styles.wrapper}>
-          {/* <Icon path={mdiLock} size={1} /> */}
-        </View>
+        <Text style = {{fontSize: 50, fontWeight: 700, textTransform: 'uppercase'}}>code</Text>
         <Text style={styles.title}>
-          forget <br />
-          password
+          VERIFICATION
         </Text>
         <Text style={styles.subtitle}>
-          Provide your account's email for which you want to reset your password
+         Enter ontime password sent on ++849092605798
         </Text>
-        <View>
-          <TextInput style={styles.textInput} placeholder="Email" />
+        <View style = {{flexDirection: 'row'}}>
+          <View style = {{width: 40, height: 40, borderWidth: 2}}></View>
+          <View style = {{width: 40, height: 40, borderWidth: 2}}></View>
+          <View style = {{width: 40, height: 40, borderWidth: 2}}></View>
+          <View style = {{width: 40, height: 40, borderWidth: 2}}></View>
+          <View style = {{width: 40, height: 40, borderWidth: 2}}></View>
+          <View style = {{width: 40, height: 40, borderWidth: 2}}></View>
         </View>
-
         <View>
           <View style={styles.wrapperButton}>
             <Pressable style={styles.but}>
-              <Text style={styles.butText}>next</Text>
+              <Text style={styles.butText}>verify code</Text>
             </Pressable>
           </View>
         </View>
@@ -79,9 +81,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   textInput: {
-    width: 305,
+    width: 275,
     height: 45,
     backgroundColor: "#C4C4C4",
     paddingHorizontal: 10,
+    outlineStyle: 'none'
   },
 });
